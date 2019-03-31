@@ -1,17 +1,25 @@
 import Vue from 'vue'
-import App from './App.vue'
+
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 import router from './router'
-import store from './store'
+
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 
 import './lib/mui/css/mui.min.css'
-import { Header } from 'mint-ui'
+import { Header, Swipe, SwipeItem } from 'mint-ui'
 import 'mint-ui/lib/style.min.css'
+import './lib/mui/css/icons-extra.css'
 
 Vue.config.productionTip = false
-Vue.component(Header.name, Header) 
+Vue.component(Header.name, Header)
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
+
+import App from './App.vue'
 
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')
