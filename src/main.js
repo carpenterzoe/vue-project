@@ -12,17 +12,17 @@ Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:MM:SS"){
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.http.options.root = 'http://www.liulongbin.top:3005/'
+Vue.http.options.emulateJSON = true
 
 import './lib/mui/css/mui.min.css' 
-import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
-import 'mint-ui/lib/style.min.css'
 import './lib/mui/css/icons-extra.css'
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.min.css'
+
+Vue.use(MintUI)
+
 Vue.config.productionTip = false
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
-Vue.component(Button.name, Button)
 
 import App from './App.vue'
 
