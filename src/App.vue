@@ -22,7 +22,7 @@
 			</router-link>
 			<router-link class="tab-item" to="/shoppingcart">
 				<span class="iconfont icon-gouwuche">
-          <span id="badge">0</span>
+          <span id="badge"> {{ $store.getters.getAllCount }}</span>
         </span>
 				<span class="tab-label">购物车</span>
 			</router-link>
