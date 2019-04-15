@@ -7,12 +7,12 @@ import router from './router'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-var cart = JSON.parse(localStorage.getItem('cart') || '[]')
+var cart_local = JSON.parse(localStorage.getItem('cart') || '[]')
 
 var store = new Vuex.Store({
   
   state: {
-    cart: cart  // 将购物车中商品的数据，用数组存储起来
+    cart: cart_local  // 将购物车中商品的数据，用数组存储起来
   },
   mutations: {
     addToShoppingCart(state, goodsinfo){
@@ -49,6 +49,14 @@ var store = new Vuex.Store({
         }
       })
       localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    updateGoodsSelected(state, info){
+      state.cart.some( item => {
+        if (item.id == info.id) {
+          item.selected = info.selected
+        }
+      })
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   getters: {
@@ -63,6 +71,26 @@ var store = new Vuex.Store({
       var o = {}
       state.cart.forEach(item => {
         o[item.id] = item.count
+      })
+      return o
+    },
+    getGoodsSelected(state){
+      var o = {}
+      state.cart.forEach( item => {
+        o[item.id] = item.selected
+      })
+      return o
+    },
+    getGoodsCountAndAmount(state){
+      var o = {
+        count: 0,
+        amount: 0
+      }
+      state.cart.forEach( item => {
+        if(item.selected){
+          o.count += item.count
+          o.amount += item.price * item.count
+        }
       })
       return o
     }
