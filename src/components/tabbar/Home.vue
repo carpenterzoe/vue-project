@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     getSwipe(){
-      this.$http.get('api/getlunbo').then(result => {
+      this.$http.get('/api/getlunbo').then(result => {
         if(result.body.status === 0) {
           this.swipeList = result.body.message;
         }else{
