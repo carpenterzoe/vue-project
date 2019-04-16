@@ -46,11 +46,15 @@ export default {
   },
   methods: {
     getGoodsList() {
-      this.$http.get('/api/getgoods?pageindex=' + this.pageindex ).then (result => {
-        if(result.body.status === 0) {
-          // this.goodslist = result.body.message;
-          this.goodslist = this.goodslist.concat(result.body.message)
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getgoods?pageindex=' + this.pageindex )
+      .then (result => {
+        if(result.data.status === 0) {
+          // this.goodslist = result.data.message;
+          this.goodslist = this.goodslist.concat(result.data.message)
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     },
     getMore() {

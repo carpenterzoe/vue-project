@@ -49,18 +49,26 @@ export default {
   },
   methods: {
     getAllCategory(){
-      this.$http.get('/api/getimgcategory').then( result => {
-        if(result.body.status === 0){
-          result.body.message.unshift({ title: "全部", id:0 })
-          this.cates = result.body.message
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getimgcategory')
+      .then( result => {
+        if(result.data.status === 0){
+          result.data.message.unshift({ title: "全部", id:0 })
+          this.cates = result.data.message
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     },
     getPhotoListByCateId(cateId){
-      this.$http.get('/api/getimages/' + cateId).then( result => {
-        if (result.body.status === 0){
-          this.list = result.body.message
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getimages/' + cateId)
+      .then( result => {
+        if (result.data.status === 0){
+          this.list = result.data.message
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     }
   }

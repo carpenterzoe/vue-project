@@ -43,23 +43,31 @@ export default {
   },
   methods: {
     getPhotoInfo() {
-      this.$http.get('/api/getimageInfo/' + this.id ).then( result => {
-        if(result.body.status === 0){
-          this.photoinfo = result.body.message[0]
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getimageInfo/' + this.id )
+      .then( result => {
+        if(result.data.status === 0){
+          this.photoinfo = result.data.message[0]
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     },
     getThumbnail(){
-      this.$http.get('/api/getthumimages/' + this.id).then( result => {
-        if(result.body.status === 0) {
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getthumimages/' + this.id)
+      .then( result => {
+        if(result.data.status === 0) {
           // 循环每个图片数据，补全图片的宽和高
-          result.body.message.forEach( item => {
+          result.data.message.forEach( item => {
             item.w = 1200
             item.h = 900
           })
           // 把完整的数据保存到list中
-          this.list = result.body.message
+          this.list = result.data.message
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     },
     closeHandler() {

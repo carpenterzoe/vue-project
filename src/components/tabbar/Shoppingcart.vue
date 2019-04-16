@@ -55,11 +55,14 @@ export default {
       var idArr = []
       this.$store.state.cart.forEach( item => idArr.push(item.id))
       if (idArr.length <=0) return
-      this.$http.get('/api/goods/getshopcarlist/' + idArr.join(','))
+      this.$ajax.get('http://www.liulongbin.top:3005/api/goods/getshopcarlist/' + idArr.join(','))
       .then( result => {
-        if(result.body.status === 0) {
-          this.goodslist = result.body.message
+        if(result.data.status === 0) {
+          this.goodslist = result.data.message
         }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     },
     remove(id, index){

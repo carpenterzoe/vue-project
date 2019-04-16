@@ -30,12 +30,14 @@ export default{
   },
   methods: {
     getNewsList(){
-      this.$http.get('/api/getnewslist').then(result => {
-        if(result.body.status === 0) {
-          this.newslist = result.body.message
-        }else {
-          Toast('获取新闻列表失败')
-        } 
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getnewslist')
+      .then(result => {
+        if(result.data.status === 0) {
+          this.newslist = result.data.message
+        }
+      })
+      .catch(error => {
+        Toast('加载数据失败')
       })
     }
   }

@@ -36,15 +36,16 @@ export default {
   },
   methods: {
     getComments(){
-      this.$http.get('/api/getcomments/'+ this.id + '?pageindex=' + this.pageIndex)
+      this.$ajax.get('http://www.liulongbin.top:3005/api/getcomments/'+ this.id + '?pageindex=' + this.pageIndex)
       .then(result => {
-        if (result.body.status === 0){
-          // this.comments = result.body.message
+        if (result.data.status === 0){
+          // this.comments = result.data.message
           // 获取新的评论数据时，不是新的数据覆盖旧数据，而是新旧数据拼接。
-          this.comments = this.comments.concat(result.body.message)
-        }else{
-          Toast('加载评论失败')
+          this.comments = this.comments.concat(result.data.message)
         }
+      })
+      .catch( error => {
+        Toast('加载数据失败')
       })
     },
     getMore(){
@@ -55,18 +56,20 @@ export default {
       if (this.msg.trim().length === 0){
         return Toast('评论内容不能为空！')
       }
-      this.$http.post('/api/postcomment/' + this.$route.params.id, { 
-        content: this.msg.trim() }) .then ( result => {
-          if (result.body.status === 0) {
+      this.$ajax.post('http://www.liulongbin.top:3005/api/postcomment/' + this.$route.params.id, { 
+        content: this.msg.trim() }) 
+        .then ( result => {
+          if (result.data.status === 0) {
             var cmt = {
               user_name: '匿名用户',
               add_time: Date.now(), 
               content: this.msg.trim()}
             this.comments.unshift(cmt)
             this.msg = ''
-          }else{
-            Toast('发表评论失败')
           }
+        })
+        .catch(error => {
+          Toast('加载数据失败')
         })
     }
   },
