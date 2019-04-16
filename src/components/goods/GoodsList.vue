@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     getGoodsList() {
-      this.$http.get('api/getgoods?pageindex=' + this.pageindex ).then (result => {
+      this.$http.get('/api/getgoods?pageindex=' + this.pageindex ).then (result => {
         if(result.body.status === 0) {
           // this.goodslist = result.body.message;
           this.goodslist = this.goodslist.concat(result.body.message)

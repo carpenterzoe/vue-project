@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getComments(){
-      this.$http.get('api/getcomments/'+ this.id + '?pageindex=' + this.pageIndex)
+      this.$http.get('/api/getcomments/'+ this.id + '?pageindex=' + this.pageIndex)
       .then(result => {
         if (result.body.status === 0){
           // this.comments = result.body.message
@@ -55,7 +55,7 @@ export default {
       if (this.msg.trim().length === 0){
         return Toast('评论内容不能为空！')
       }
-      this.$http.post('api/postcomment/' + this.$route.params.id, { 
+      this.$http.post('/api/postcomment/' + this.$route.params.id, { 
         content: this.msg.trim() }) .then ( result => {
           if (result.body.status === 0) {
             var cmt = {

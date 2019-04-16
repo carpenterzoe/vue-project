@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     getSwipe() {
-      this.$http.get('api/getthumimages/' + this.id ).then(result => {
+      this.$http.get('/api/getthumimages/' + this.id ).then(result => {
         if ( result.body.status === 0 ) {
           // 循环轮播图数组的每一项，为 item 添加 img 属性
           // 因为轮播图组件中，只认识item.img 不认识 item.src
@@ -87,7 +87,7 @@ export default {
       })
     },
     getGoodsInfo(){
-      this.$http.get( 'api/goods/getinfo/' + this.id ).then( result => {
+      this.$http.get( '/api/goods/getinfo/' + this.id ).then( result => {
         if( result.body.status === 0 ){
           this.goodsinfo = result.body.message[0]
         }

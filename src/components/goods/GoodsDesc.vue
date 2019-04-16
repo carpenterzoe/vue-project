@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     getGoodsDesc() {
-      this.$http.get( 'api/goods/getdesc/' + this.$route.params.id ).then(result => {
+      this.$http.get( '/api/goods/getdesc/' + this.$route.params.id ).then(result => {
         if(result.body.status === 0) {
           this.info = result.body.message[0]
         }

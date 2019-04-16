@@ -43,14 +43,14 @@ export default {
   },
   methods: {
     getPhotoInfo() {
-      this.$http.get('api/getimageInfo/' + this.id ).then( result => {
+      this.$http.get('/api/getimageInfo/' + this.id ).then( result => {
         if(result.body.status === 0){
           this.photoinfo = result.body.message[0]
         }
       })
     },
     getThumbnail(){
-      this.$http.get('api/getthumimages/' + this.id).then( result => {
+      this.$http.get('/api/getthumimages/' + this.id).then( result => {
         if(result.body.status === 0) {
           // 循环每个图片数据，补全图片的宽和高
           result.body.message.forEach( item => {

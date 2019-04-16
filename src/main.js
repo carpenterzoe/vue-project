@@ -104,7 +104,7 @@ Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:MM:SS"){
 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
-Vue.http.options.root = 'http://www.liulongbin.top:3005/'
+//Vue.http.options.root = 'http://www.liulongbin.top:3005/'
 Vue.http.options.emulateJSON = true
 
 import './lib/mui/css/mui.min.css' 

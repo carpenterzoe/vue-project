@@ -55,7 +55,7 @@ export default {
       var idArr = []
       this.$store.state.cart.forEach( item => idArr.push(item.id))
       if (idArr.length <=0) return
-      this.$http.get('api/goods/getshopcarlist/' + idArr.join(','))
+      this.$http.get('/api/goods/getshopcarlist/' + idArr.join(','))
       .then( result => {
         if(result.body.status === 0) {
           this.goodslist = result.body.message
