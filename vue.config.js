@@ -2,7 +2,7 @@ module.exports = {
   publicPath:"./",
   assetsDir: "./",
   devServer: {
-    proxy: {
+    proxyTable: {
       '/api': {
         target: 'http://www.liulongbin.top:3005',
         changeOrigin: true,
