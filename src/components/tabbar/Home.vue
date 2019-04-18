@@ -42,10 +42,11 @@ export default {
   },
   methods: {
     getSwipe(){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getlunbo')
-      .then(result=> {        
+      this.$ajax.get('api/getlunbo')
+      .then(result=> {    
         if(result.data.status === 0) {
-          this.swipeList = result.data.message;
+          
+          this.swipeList = result.data.message     
         }
       })
       .catch( error => {
