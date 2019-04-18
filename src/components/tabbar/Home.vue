@@ -42,9 +42,7 @@ export default {
   },
   methods: {
     getSwipe(){
-      this.$ajax.get('https://bird.ioliu.cn/v1', {
-        url: 'http://www.liulongbin.top:3005/api/getlunbo'
-      })
+      this.$ajax.get('https://bird.ioliu.cn/v1?url=http://www.liulongbin.top:3005/api/getlunbo')
       .then(result=> {    
         if(result.data.status === 0) {
           
