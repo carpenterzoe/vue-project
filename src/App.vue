@@ -15,8 +15,9 @@
     <!-- 底部 Tabbar 区域 -->
     <nav class="bar bar-tab">
 			<router-link class="tab-item" to="/home">
-				<!-- <span class="mui-icon mui-icon-home"></span> -->
-        <span class="iconfont icon-xiazai45"></span>
+        <span >
+          <i class="iconfont icon-xiazai45"></i>
+        </span>
 				<span class="tab-label">首页</span>
 			</router-link>
       
@@ -71,20 +72,21 @@ export default {
   padding-top: 40px;
   overflow-x: hidden;
   padding-bottom: 50px;
+  background-color: #fff;
   .mt-header{
     z-index: 99;
   }
   .bar.bar-tab{
-    border-top: #ccc solid 1px;
+    border-top: #999 solid 1px;
     position: fixed;
     bottom: 0;
     z-index: 100;
     width: 100%;
-    height: 50px;
+    height: 55px;
     display: flex;
     justify-content: space-between;
     text-align: center;
-    background-color: #f3f0f0; 
+    background-color: #f1eeee; 
     align-items: center;
     .tab-item{
       display: flex;
@@ -101,7 +103,7 @@ export default {
       }
       .iconfont{
         font-weight: bold;
-        font-size: 21px;
+        font-size: 23px;
         position: relative;
          #badge{
           background-color: red;

@@ -29,6 +29,7 @@
  
 
 <script>
+import api from '../../api/api.js'
 import mui from '../../lib/mui/js/mui.min.js'
 
 export default {
@@ -49,7 +50,7 @@ export default {
   },
   methods: {
     getAllCategory(){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getimgcategory')
+      this.$ajax.get(api.getimgcategory)
       .then( result => {
         if(result.data.status === 0){
           result.data.message.unshift({ title: "全部", id:0 })
@@ -61,7 +62,7 @@ export default {
       })
     },
     getPhotoListByCateId(cateId){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getimages/' + cateId)
+      this.$ajax.get(api.getimages + cateId)
       .then( result => {
         if (result.data.status === 0){
           this.list = result.data.message

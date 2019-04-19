@@ -1,19 +1,5 @@
 <template>
   <div class="goods-list" >
-    <!-- <router-link :to="'/home/goodsinfo/' + item.id" tag="div" class="goods-item" v-for="item in goodslist" :key="item.id">
-      <img :src="item.img_url" alt="">
-      <h1 class="title"> {{ item.title }} </h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥{{ item.sell_price }}</span>
-          <span class="old">￥{{ item.market_price }}</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩{{ item.stock_quantity }}件</span>
-        </p>
-      </div>
-    </router-link> -->
     <div class="goods-item" v-for="item in goodslist" :key="item.id" @click="goDetail(item.id)">
       <img :src="item.img_url" alt="">
       <h1 class="title"> {{ item.title }} </h1>
@@ -34,6 +20,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 export default {
   data(){
     return {
@@ -46,10 +33,10 @@ export default {
   },
   methods: {
     getGoodsList() {
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getgoods?pageindex=' + this.pageindex )
+      this.$ajax.get( api.getgoods + this.pageindex )
       .then (result => {
         if(result.data.status === 0) {
-          // this.goodslist = result.data.message;
+          // this.goodslist = result.data.message;          
           this.goodslist = this.goodslist.concat(result.data.message)
         }
       })

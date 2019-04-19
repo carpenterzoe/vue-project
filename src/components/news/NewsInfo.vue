@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import comment from '../subcomponents/Comment.vue'
 
 export default {
@@ -33,7 +34,7 @@ export default {
   },
   methods: {
     getNewsInfo() {
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getnew/' + this.id )
+      this.$ajax.get( api.getnew + this.id )
       .then(result => {
         if (result.data.status === 0) {
           this.newsinfo = result.data.message[0]

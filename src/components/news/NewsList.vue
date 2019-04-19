@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import { Toast } from 'mint-ui'
 export default{
   data() {
@@ -30,7 +31,7 @@ export default{
   },
   methods: {
     getNewsList(){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getnewslist')
+      this.$ajax.get( api.getnewslist )
       .then(result => {
         if(result.data.status === 0) {
           this.newslist = result.data.message

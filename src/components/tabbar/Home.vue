@@ -29,35 +29,49 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import { Toast } from 'mint-ui'
 import Swiper from '../subcomponents/Swiper.vue'
 export default {
   data(){
     return {
-      swipeList: [] // 保存轮播图的数组
-    }
-  },
-  created() {
-    this.getSwipe()
-  },
-  methods: {
-    getSwipe(){
-      this.$ajax.get('https://bird.ioliu.cn/v1?url=http://www.liulongbin.top:3005/api/getlunbo')
-      .then(result=> {    
-        if(result.data.status === 0) {
-          
-          this.swipeList = result.data.message     
+      swipeList: [
+        { 
+          "id":1,
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556247713&di=ba8ee92d7f0a50a87d503deebb8ea89f&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F019cc058a653c9a801219c778d3f50.png" 
+        },
+        {
+          "id":2,
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555652635328&di=ec520a7f423fa93f2fb893086490ca2b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0132aa58be2231a801219c77e8de4f.jpg%402o.jpg"
+        },
+        {
+          "id":3,
+          "img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555653076619&di=89b9b6a3ddbdedab6c98c2db6dab7f90&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01398c5942618ca8012193a3f97976.jpg"
         }
-      })
-      .catch( error => {
-          Toast('加载轮播图失败')
-      })
+      ]
     }
   },
+  // created() {
+  //   this.getSwipe()
+  // },
+  // methods: {
+    // getSwipe(){
+    //   this.$ajax.get(api.getlunbo)
+    //   .then(result=> {    
+    //     if(result.data.status === 0) {
+    //       this.swipeList = result.data.message     
+    //     }
+    //   })
+    //   .catch( error => {
+    //       Toast('加载轮播图失败')
+    //   })
+    // }
+  // },
   components: {
     Swiper
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

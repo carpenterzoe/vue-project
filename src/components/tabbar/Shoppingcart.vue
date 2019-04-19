@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import numbox from '../subcomponents/NumberBox_Cart.vue'
 
 export default {
@@ -55,7 +56,7 @@ export default {
       var idArr = []
       this.$store.state.cart.forEach( item => idArr.push(item.id))
       if (idArr.length <=0) return
-      this.$ajax.get('http://www.liulongbin.top:3005/api/goods/getshopcarlist/' + idArr.join(','))
+      this.$ajax.get( api.getshopcarlist + idArr.join(','))
       .then( result => {
         if(result.data.status === 0) {
           this.goodslist = result.data.message

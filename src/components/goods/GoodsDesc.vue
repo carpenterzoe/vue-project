@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 export default {
   data(){
     return {
@@ -18,7 +19,7 @@ export default {
   },
   methods: {
     getGoodsDesc() {
-      this.$ajax.get( 'http://www.liulongbin.top:3005/api/goods/getdesc/' + this.$route.params.id )
+      this.$ajax.get( api.getdesc + this.$route.params.id )
       .then(result => {
         if(result.data.status === 0) {
           this.info = result.data.message[0]

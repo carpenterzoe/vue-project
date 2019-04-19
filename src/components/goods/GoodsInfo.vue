@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import Swiper from '../subcomponents/Swiper.vue'
 import NumBox from '../subcomponents/NumBox.vue'
 
@@ -74,7 +75,7 @@ export default {
   },
   methods: {
     getSwipe() {
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getthumimages/' + this.id )
+      this.$ajax.get( api.getthumimages + this.id )
       .then(result => {
         if ( result.data.status === 0 ) {
           // 循环轮播图数组的每一项，为 item 添加 img 属性

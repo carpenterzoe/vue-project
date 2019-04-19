@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import { Toast } from 'mint-ui'
 export default {
   data(){
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     getComments(){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getcomments/'+ this.id + '?pageindex=' + this.pageIndex)
+      this.$ajax.get( api.getcomments + this.id + '?pageindex=' + this.pageIndex)
       .then(result => {
         if (result.data.status === 0){
           // this.comments = result.data.message
@@ -56,7 +57,7 @@ export default {
       if (this.msg.trim().length === 0){
         return Toast('评论内容不能为空！')
       }
-      this.$ajax.post('http://www.liulongbin.top:3005/api/postcomment/' + this.$route.params.id, { 
+      this.$ajax.post( api.postcomment + this.$route.params.id, { 
         content: this.msg.trim() }) 
         .then ( result => {
           if (result.data.status === 0) {

@@ -7,6 +7,8 @@ import router from './router'
 import axios from 'axios'
 Vue.prototype.$ajax = axios
 
+import './lib/iconfont/iconfont.css'
+
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
@@ -104,11 +106,6 @@ import moment from 'moment'
 Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:MM:SS"){
   return moment(dataStr).format(pattern)
 })
-
-// import VueResource from 'vue-resource'
-// Vue.use(VueResource)
-// Vue.http.options.root = 'http://www.liulongbin.top:3005'
-// Vue.http.options.emulateJSON = true
 
 import './lib/mui/css/mui.min.css' 
 import './lib/mui/css/icons-extra.css'

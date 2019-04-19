@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import api from '../../api/api.js'
 import comment from '../subcomponents/Comment.vue'
 
 export default {
@@ -43,7 +44,7 @@ export default {
   },
   methods: {
     getPhotoInfo() {
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getimageInfo/' + this.id )
+      this.$ajax.get( api.getimageInfo + this.id )
       .then( result => {
         if(result.data.status === 0){
           this.photoinfo = result.data.message[0]
@@ -54,7 +55,7 @@ export default {
       })
     },
     getThumbnail(){
-      this.$ajax.get('http://www.liulongbin.top:3005/api/getthumimages/' + this.id)
+      this.$ajax.get( api.getthumimages + this.id)
       .then( result => {
         if(result.data.status === 0) {
           // 循环每个图片数据，补全图片的宽和高
