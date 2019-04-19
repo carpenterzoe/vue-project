@@ -92,7 +92,7 @@ export default {
       })
     },
     getGoodsInfo(){
-      this.$ajax.get( 'http://www.liulongbin.top:3005/api/goods/getinfo/' + this.id )
+      this.$ajax.get( api.getinfo + this.id )
       .then( result => {
         if( result.data.status === 0 ){
           this.goodsinfo = result.data.message[0]
